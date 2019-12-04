@@ -1,15 +1,7 @@
-section .data
-    msg db "Hello World"
-
-section .text
-    global_start
-
-_start:
-    mov rax, 1
-    mov rai, 1
-    mov rsi, msg
-    mov rdx, 12
-    syscall
-    mov rax, 60
-    mov rdi, 0
-    syscall
+# Simple exit program
+.section __TEXT,__text
+.globl _main
+_main:
+  movl       $0x2000001, %eax # system call $1 with $0x2000000 offset
+  movl       $0, %ebx         # set the exit code to be $0
+  syscall
